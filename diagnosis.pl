@@ -18,4 +18,6 @@ phobia(_,
 
 diagnosis :-
     phobia(_,M),
-    multiSympton(M, 2, 0, 0).
+    multiSympton(M, 2, 0, 0). 
+
+    % a
