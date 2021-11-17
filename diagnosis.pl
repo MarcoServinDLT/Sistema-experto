@@ -16,8 +16,10 @@ multiSympton([H|T], Min, Symptoms, Matches) :-
 phobia(_, 
     ['publico', 'cerrado', 'abiertos', 'multitud', 'solo']).
 
+depresionM([_,'deprimido','peso','disminucion','inutilidad','muerte']).
+
 diagnosis :-
     phobia(_,M),
     multiSympton(M, 2, 0, 0). 
 
-    % a
+
