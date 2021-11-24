@@ -1,14 +1,27 @@
+:- use_module(library(pce)).
+
+
 isList([_]) :- !.
 isList([_|_]) :- !.
 
 
+% --------------------- Ventana emergente con pregunta --------------------- %
+questionWin(Q, Answer) :-
+    new(Question, dialog('Diagnostico')),
+    send(Question, append, new(label(question, Q))),
+    send(Question, append, new(button('Si', message(Question, return, 'Si')))),
+    send(Question, append, new(button('No', message(Question, return, 'No')))),
+    send(Question, open_centered),
+    send(Question, open),
+    get(Question, confirm, Answer),
+    writeln(Answer),
+    send(Question, destroy).
 
 % -- Pregunstas individuales de sintomsa -- %
 symptom(Symptom) :- 
     patientAnswers(Symptom,_) -> patientAnswers(Symptom, 'Si') ;
     isList(Symptom) -> multiSympton(Symptom) ;
-    write(Symptom), nl,
-    read(Respose),
+    questionWin(Symptom, Respose),
     assert(patientAnswers(Symptom, Respose)),
     Respose == 'Si'.
 
@@ -31,9 +44,10 @@ multiSympton([H|T], Min, Symptoms, Matches) :-
 :- dynamic patientAnswers/2.
 
 % -- Procedimiento para agregar una respuesta -- %
-addAnswer(Question, Asnwer) :-
+addAnswer(Question, Asnwer, Window) :-
     \+ patientAnswers(Question, _),
-    assert(patientAnswers(Question, Asnwer)).
+    assert(patientAnswers(Question, Asnwer)), 
+    send(Window, close).
 
 % -- Procedimiento para alimentar la base de conocimientos del sistema -- %
 %addJudment(Disorder) :-
@@ -46,4 +60,5 @@ diagnosis :-
     disorders(T, L),
     length(L, Tam),
     multiSympton(L, Tam, 0, 0),
-    write(T).
+    write(T),
+    retract(patientAnswers(_,_)).

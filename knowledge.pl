@@ -12,12 +12,14 @@ disorders("Transtorno de Ansiedad Generalizada",
         "El paciente ha tenido episodios de ansiedad",
         "Dichos episodios han estado vigentes en periodos prolongados de 6 meses o mas"    
     ],
+    "El estado animico del paciente no puede ser atribuido al estado de salud fisiologico ya sea por enfermedad o por uso  de sustancias",
     [
         3,
         "El paciente tiene una inquietud constante provocada por la sensacion de estar atrapado",
         "El paciente se fatiga con facilidad",
         "El concentrarse resulta ser una tarea dificil para el paciente",
         "El paciente se molesta con facilidad",
+        "El estres y la ansiedad provocan tension muscular en el paciente?",
         "El paciente tiene dificultades para conciliar el sueño o tener una calidad de sueño satisfactoria"    
     ]
 ]
