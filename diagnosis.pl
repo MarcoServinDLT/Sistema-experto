@@ -61,4 +61,4 @@ diagnosis :-
     length(L, Tam),
     multiSympton(L, Tam, 0, 0),
     write(T),
-    retract(patientAnswers(_,_)).
+    retractall(patientAnswers(_,_)).
