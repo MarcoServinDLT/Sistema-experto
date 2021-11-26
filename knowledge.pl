@@ -2,103 +2,90 @@
 
 disorders("Transtorno de Ansiedad Generalizada", 
 [
-    [
-        2,
-        "El paciente presenta problemas emocionales como miedo o ansiedad",
-        "Dichos problemas han tenido consecuencias negativas en entornos importantes del paciente como lo son el entorno social y laboral"
-    ],
-    [
-        2,
-        "El paciente ha tenido episodios de ansiedad",
-        "Dichos episodios han estado vigentes en periodos prolongados de 6 meses o mas"    
-    ],
-    "El estado animico del paciente no puede ser atribuido al estado de salud fisiologico ya sea por enfermedad o por uso  de sustancias",
+    "¿Los problemas que el paciente presenta han tenido consecuencias negativas en su vida cotidiana?",
+    "¿El paciente ha tenido episodios de ansiedad?",
+    "¿Dichos episodios han estado vigentes en período de al menos 6 meses?",
+    "¿El paciente está enfermo?",
+    "¿El paciente usa sustancias o está bajo medicación psiquiátrica?",
+    "¿Se encuentra en un estado constante de preocupación?",
     [
         3,
-        "El paciente tiene una inquietud constante provocada por la sensacion de estar atrapado",
-        "El paciente se fatiga con facilidad",
-        "El concentrarse resulta ser una tarea dificil para el paciente",
-        "El paciente se molesta con facilidad",
-        "El estres y la ansiedad provocan tension muscular en el paciente?",
-        "El paciente tiene dificultades para conciliar el sueño o tener una calidad de sueño satisfactoria"    
+        "¿Tiene una inquietud constante por la sensación de estar atrapado?",
+        "¿Se fatiga con facilidad?",
+        "¿Se le dificulta concentrarse?",
+        "¿Se molesta con facilidad?",
+        "¿Se le dificulta conciliar el sueño o descansar?"    
     ]
 ]
 ).
 
 disorders("Transtorno de Fobia Especifica", 
 [
-    [
-        2,
-        "El paciente presenta problemas emocionales como miedo o ansiedad",
-        "Dichos problemas han tenido consecuencias negativas en entornos importantes del paciente como lo son el entorno social y laboral"
-    ],
-    [
-        2,
-        "El paciente ha tenido episodios de ansiedad",
-        "Dichos episodios han estado vigentes en periodos prolongados de 6 meses o mas"    
-    ],
-    "La ansiedad que el paciente presenta se puede atribuir a una situacion u objeto en especial",
-    "El paciente llora al estar envuelto en dicha situacion o al observar el objeto en particular",
-    "El paciente evita o opone resistencia activamente a los eventos que le causan ansiedad",
-    "La ansiedad que el paciente presenta es desproporcionada al peligro que podria suponer la situacion o el objeto",
-    "El paciente ha sufrido alguna experiencia negativa en la que un evento similar haya ocurrido Sin tomar en cuenta los ataques de ansiedad"
+    "¿Los problemas que el paciente presenta han tenido consecuencias negativas en su vida cotidiana?",
+    "¿El paciente ha tenido episodios de ansiedad?",
+    "¿Dichos episodios han estado vigentes en período de al menos 6 meses?" ,
+    "¿La ansiedad se puede atribuir a una situación u objeto en especial?",
+    "¿El paciente evita u opone resistencia a la causa de la ansiedad?",
+    "¿El miedo que el paciente presenta es desproporcionado al peligro que podría suponer la situación u objeto?",
+    "¿El paciente ha sufrido algún evento traumático relacionado a la causa de la ansiedad?"
 ]
 ).
 
 disorders("Agorafobia",
 [
-    [
-        2,
-        "El paciente presenta problemas emocionales como miedo o ansiedad",
-        "Dichos problemas han tenido consecuencias negativas en entornos importantes del paciente como lo son el entorno social y laboral"
-    ],
-    [
-        2,
-        "El paciente ha tenido episodios de ansiedad",
-        "Dichos episodios han estado vigentes en periodos prolongados de 6 meses o mas"    
-    ],
-    "La ansiedad que el paciente presenta se puede atribuir a una situacion u objeto en especial",
+    "¿Los problemas que el paciente presenta han tenido consecuencias negativas en su vida cotidiana?",
+    "¿El paciente ha tenido episodios de ansiedad?",
+    "¿Dichos episodios han estado vigentes en período de al menos 6 meses?",
+    "¿La ansiedad se puede atribuir a una situación u objeto en especial?",
     "El paciente llora al estar envuelto en dicha situacion o al observar el objeto en particular",
-    "El paciente evita o opone resistencia activamente a los eventos que le causan ansiedad",
-    "La ansiedad que el paciente presenta es desproporcionada al peligro que podria suponer la situacion o el objeto",
-    "El paciente ha sufrido alguna experiencia negativa en la que un evento similar haya ocurrido Sin tomar en cuenta los ataques de ansiedad",
-    "El paciente presenta ataques de ansiedad cuando debe realizar actividades fuera de casa",
-    "En dichas situaciones El paciente se encuentra en un estado de alerta constante en el cual los pensamientos recurrentes estan relacionados con lo dificil que seria recibir ayuda en caso de una tragedia",
+    "¿El paciente evita u opone resistencia a la causa de la ansiedad?",
+    "¿El miedo que el paciente presenta es desproporcionado al peligro que podría suponer la situación u objeto?",
+    "¿El paciente ha sufrido algún evento traumático relacionado a la causa de la ansiedad?",
+    "¿Teme al estar fuera de casa? ",
+    "Al estar fuera de casa ¿tiene una sensación constante de alerta?",
     [
         2,
-        "El usar el transporte publico causa ansiedad al paciente",
-        "El paciente teme a los espacios abiertos",
-        "El paciente teme a los sitios cerrados",
-        "El paciente sufre ansiedad cuando esta rodeado de muchas personas",
-        "Para el paciente es imprescindible la compañia de algun conocido para realizar actividades fuera de casa"
-    ],
-    "El paciente presenta afecciones patologicas como problemas inflamatorios gastrointestinales o neurologicos como parkinson derivados de episodios de ansiedad",
-    "El estado animico del paciente no puede ser atribuido al estado de salud fisiologico ya sea por enfermedad o por uso  de sustancias",
-    "El paciente esta en un estado constante de preocupacion"
+        "¿El usar el transporte público le causa ansiedad? ",
+        "¿Teme a los espacios abiertos?",
+        "¿Teme a los sitios cerrados?",
+        "¿Sufre ansiedad cuando está en aglomeraciones?",
+        "¿La compañía de algún conocido es imprescindible para salir de casa?"
+    ]
 ]
 ).
 
 disorders("Transtorno Depresivo Mayor",
 [
-    "El estado animico del paciente no puede ser atribuido al estado de salud fisiologico ya sea por enfermedad o por uso  de sustancias",
+    "¿Los problemas que el paciente presenta han tenido consecuencias negativas en su vida cotidiana?",
+    "¿El paciente está enfermo?",
+    "¿El paciente usa sustancias o está bajo medicación psiquiátrica?",
     [
         5,
-        "El paciente presenta un estado animico mayormente depresivo",
-        "El paciente se molesta con facilidad",
-        "El paciente demuestra una perdida de interes o satisfaccion en la realizacion de sus actividades cotidianas",
-        "El paciente ha experimentado una perdida o aumento de peso alarmante derivado de desordenes alimenticios provocados ya sea por la falta o aumento del apetito", 
-        "El paciente tiene problemas con el sueño llegando a extremos es decir presenta insomnio o hipersomnia.",
-        "El paciente tiene problemas de psicomotricidad notables",
-        "El paciente se fatiga con facilidad derivado de la falta de energia",
-        "El paciente tiene sentimientos negativos hacia su persona, tal como sentimiento de inutilidad o culpabilidad excesiva o inapropiada",
-        "El paciente sufre de dificultad para concentrarse la cual afecta su proceso de toma de decisiones"
+        "¿Se encuentra la mayoría del tiempo desanimado?",
+        "¿Se molesta con facilidad?",
+        "¿Ha perdido interés en realizar sus actividades cotidianas?",
+        [
+            2,
+            "¿Ha cambiado sus hábitos alimenticios?",
+            "¿Ha experimentado una pérdida o aumento de peso alarmante? "
+        ], 
+        [
+            1,
+            "¿Se le dificulta conciliar el sueño o descansar?",
+            "¿Duerme más de lo habitual?"
+        ],
+        [
+            3,
+            "¿Se considera inhábil para realizar actividades físicas?",
+            "¿Se le dificulta el aprender?",
+            "¿Se le dificulta comunicarse efectivamente?"
+        ],
+        "¿Se fatiga con facilidad?",
+        "¿Se siente culpable de todo lo negativo que le ocurre  y a su entorno?",
+        "¿La toma de decisiones le resulta una tarea difícil?"
     ],
-    [
-        2,
-        "El paciente tiene pensamientos relacionados con la muerte frecuentemente no unicamente con relacion al miedo que esta situacion supone",
-        "El paciente ha tenido ideas suicidas"
-    ],
-    "Durante el periodo reciente, el paciente ha presentado episodios de mania o hipomania",
-    "El paciente ha presentado ningun episodio psicotico que NO pueda ser explicado por trastornos del espectro de la esquizofrenia"
+    "¿piensa en la muerte de forma frecuente?",
+    "¿Ha tenido ideas suicidas de forma frecuente?",
+    "Durante el periodo reciente ¿ha sentido euforia sin motivo aparente? "
 ]
 ).
