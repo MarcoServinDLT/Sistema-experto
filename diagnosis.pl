@@ -1,4 +1,5 @@
 :- use_module(library(pce)).
+:- encoding(utf8).
 
 % --------------------- Procedimiento de la ventana principal --------------------- %
 :-
