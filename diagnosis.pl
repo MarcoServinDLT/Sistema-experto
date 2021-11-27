@@ -1,6 +1,19 @@
 :- use_module(library(pce)).
 
+% --------------------- Procedimiento de la ventana principal --------------------- %
+:-
+    new(Main, dialog('Diagnostico de trestornos')),
+    send(Main, append, bitmap(image('Resorces/Logo.jpg'))),
+    send(Main, append, 
+        new(label(instruction, "Sistema experto para identificación\n de trastornos psivoclogicos", font := bold)), right),
+    send(Main, append, new(Diagnostico, dialog_group('Diagnostico')), right),
+    send(Diagnostico, append, new(label(instruction, "Haga clic en el botón iniciar para comenzar un diagnóstico"))),
+    send(Diagnostico, append, new(button('Iniciar', message(@prolog, diagnosis)))),
+    send(Main, open_centered),
+    send(Main, open).
 
+
+% --------------------- Procedimiento para determinar si es lista --------------------- %
 isList([_]) :- !.
 isList([_|_]) :- !.
 
@@ -14,7 +27,6 @@ questionWin(Q, Answer) :-
     send(Question, open_centered),
     send(Question, open),
     get(Question, confirm, Answer),
-    writeln(Answer),
     send(Question, destroy).
 
 % --------------------- Pregunstas individuales de sintomsa --------------------- %
@@ -62,8 +74,6 @@ addAnswer(Question, Asnwer, Window) :-
     %forall(patientAnswers(Question, 'si'), ),
     %assert(disorders(Disorder, Questions)).
 
-
-
 % --------------------- Procedimiento para realizar un diagnóstico --------------------- %
 diagnosis :-
     consult("knowledge.pl"),
@@ -74,4 +84,5 @@ diagnosis :-
     retractall(patientAnswers(_,_));
     disorders(T, L),
     multiSympton(L, 0, 0, 0),
+    write(T),
     retractall(patientAnswers(_,_)).
