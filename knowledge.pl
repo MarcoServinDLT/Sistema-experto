@@ -1,3 +1,4 @@
+:- encoding(utf8).
 :- dynamic disorders/2.
 
 disorders("Transtorno de Ansiedad Generalizada", 

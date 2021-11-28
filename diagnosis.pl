@@ -1,36 +1,8 @@
-:- use_module(library(pce)).
-:- encoding(utf8).
-
-% --------------------- Procedimiento de la ventana principal --------------------- %
-:-
-    new(Main, dialog('Diagnostico de trestornos')),
-    send(Main, append, bitmap(image('Resorces/Logo.jpg'))),
-    send(Main, append, 
-        new(label(instruction, "Sistema experto para identificación\n de trastornos psivoclogicos", font := bold)), right),
-    send(Main, append, new(Diagnostico, dialog_group('Diagnostico')), right),
-    send(Diagnostico, append, new(label(instruction, "Haga clic en el botón iniciar para comenzar un diagnóstico"))),
-    send(Diagnostico, append, new(button('Iniciar', message(@prolog, diagnosis)))),
-    send(Main, open_centered),
-    send(Main, open).
-
-
 % --------------------- Procedimiento para determinar si es lista --------------------- %
 isList([_]) :- !.
 isList([_|_]) :- !.
 
-
-% --------------------- Ventana emergente con pregunta --------------------- %
-questionWin(Q, Answer) :-
-    new(Question, dialog('Diagnostico')),
-    send(Question, append, new(label(question, Q))),
-    send(Question, append, new(button('Si', message(Question, return, 'Si')))),
-    send(Question, append, new(button('No', message(Question, return, 'No')))),
-    send(Question, open_centered),
-    send(Question, open),
-    get(Question, confirm, Answer),
-    send(Question, destroy).
-
-% --------------------- Pregunstas individuales de sintomsa --------------------- %
+% --------------------- Pregunstas individuales de sintomas --------------------- %
 symptom(Symptom) :- 
     patientAnswers(Symptom,_) -> patientAnswers(Symptom, 'Si') ;
     isList(Symptom) -> multiSympton(Symptom) ;
@@ -45,15 +17,15 @@ probDisorder(Symptom) :-
     questionWin(Symptom, Respose),
     assert(patientAnswers(Symptom, Respose)).
 
-% --------------------- Validación de criterios múltiples --------------------- %
+% --------------------- Validación de criterios últiples --------------------- %
 multiSympton([Min|Symptoms]) :-
     multiSympton(Symptoms, Min, 0, 0), !.
 
-% --------------------- Caso base del procedimietno para calcular el cumplimiento de sintomas múltiples --------------------- %
+% --------------------- Caso base del procedimietno para calcular el cumplimiento de sintomas últiples --------------------- %
 multiSympton([], Min, _, Matches) :-
     Min =< Matches, !.
 
-% --------------------- Procedimiento para criterios de sintomas múltiples --------------------- %
+% --------------------- Procedimiento para criterios de sintomas últiples --------------------- %
 multiSympton([H|T], Min, Symptoms, Matches) :-
     S is Symptoms + 1,
     symptom(H) -> M is Matches + 1, multiSympton(T, Min, S, M);
@@ -71,19 +43,18 @@ addAnswer(Question, Asnwer, Window) :-
     send(Window, close).
 
 % --------------------- Procedimiento para alimentar la base de conocimientos del sistema --------------------- %
-%addJudment(Disorder) :-
-    %forall(patientAnswers(Question, 'si'), ),
-    %assert(disorders(Disorder, Questions)).
+addJudment(Disorder) :-
+    findall(P, patientAnswers(P, 'Si'), L),
+    assert(disorders(Disorder, L)).
+
 
 % --------------------- Procedimiento para realizar un diagnóstico --------------------- %
-diagnosis :-
+diagnosis(Disorder) :-
     consult("knowledge.pl"),
-    disorders(T, L),
-    length(L, Tam),
-    multiSympton(L, Tam, 0, 0),
-    write(T),
-    retractall(patientAnswers(_,_));
-    disorders(T, L),
-    multiSympton(L, 0, 0, 0),
-    write(T),
+    forall(disorders(T, L), (
+        length(L, Tam),
+        multiSympton(L, Tam, 0, 0),
+        writeln(T)
+        %send(Disorder, append, new(label(diagnosis, T)))
+    )),
     retractall(patientAnswers(_,_)).
