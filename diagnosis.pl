@@ -4,18 +4,11 @@ isList([_|_]) :- !.
 
 % --------------------- Pregunstas individuales de sintomas --------------------- %
 symptom(Symptom) :- 
-    patientAnswers(Symptom,_) -> patientAnswers(Symptom, 'Si') ;
+    patientAnswers(Symptom,_) -> patientAnswers(Symptom, Res), expectedResponse(Symptom, Res) ;
     isList(Symptom) -> multiSympton(Symptom) ;
     questionWin(Symptom, Respose),
     assert(patientAnswers(Symptom, Respose)),
-    Respose == 'Si'.
-
-% --------------------- Todas las preguntas --------------------- %
-probDisorder(Symptom) :- 
-    patientAnswers(Symptom,_) -> patientAnswers(Symptom, 'Si') ;
-    isList(Symptom) -> multiSympton(Symptom) ;
-    questionWin(Symptom, Respose),
-    assert(patientAnswers(Symptom, Respose)).
+    expectedResponse(Symptom , Respose).
 
 % --------------------- Validación de criterios últiples --------------------- %
 multiSympton([Min|Symptoms]) :-
@@ -42,19 +35,13 @@ addAnswer(Question, Asnwer, Window) :-
     assert(patientAnswers(Question, Asnwer)), 
     send(Window, close).
 
-% --------------------- Procedimiento para alimentar la base de conocimientos del sistema --------------------- %
-addJudment(Disorder) :-
-    findall(P, patientAnswers(P, 'Si'), L),
-    assert(disorders(Disorder, L)).
-
-
 % --------------------- Procedimiento para realizar un diagnóstico --------------------- %
 diagnosis(Disorder) :-
     consult("knowledge.pl"),
     forall(disorders(T, L), (
         length(L, Tam),
         multiSympton(L, Tam, 0, 0),
-        writeln(T)
-        %send(Disorder, append, new(label(diagnosis, T)))
+        writeln(T);
+        true
     )),
     retractall(patientAnswers(_,_)).
