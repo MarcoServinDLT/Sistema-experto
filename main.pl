@@ -5,10 +5,8 @@
 :-
     consult('diagnosis.pl'),
     new(Main, dialog('Diagnóstico de trestornos')),
-    send(Main, append, bitmap(image('Resources/Logo.jpg'))),
-    send(Main, append, 
-        new(label(instruction, "Sistema experto para identificación\n de trastornos psicologicos", font := bold)), right),
-    send(Main, append, new(Diagnostico, dialog_group('Diagnóstico')), right),
+    send(Main, append, bitmap(image('Resources/fondo.jpg'))),
+    send(Main, display, new(Diagnostico, dialog_group('Diagnóstico')), point(500,200)),
     send(Diagnostico, append, new(label(instruction, "Haga clic en el botón iniciar para comenzar un diagnóstico"))),
     send(Diagnostico, append, new(button('Iniciar', message(@prolog, diagnosis, Main)))),
     send(Main, open_centered),
