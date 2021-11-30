@@ -1,4 +1,6 @@
 :- encoding(utf8).
+
+
 % --------------------- Procedimiento para determinar si es lista --------------------- %
 isList([_]) :- !.
 isList([_|_]) :- !.
@@ -40,26 +42,28 @@ addAnswer(Question, Asnwer, Window) :-
 :- dynamic transtorno/1.
 
 % --------------------- Procedimiento para realizar un diagnóstico --------------------- %
-diagnosis(Window) :-
+diagnosis:-
     retractall(patientAnswers(_,_)),    
     consult("knowledge.pl"),
     forall(disorders(T, L), (
         length(L, Tam),
         multiSympton(L, Tam, 0, 0),
-        assert(transtorno(T))
+        asserta(transtorno(T))
         ;
         true
     )),
     transtorno(T),
-    send(Window, display, new(Diagnostico, dialog_group('Resultado')), point(520,400)),
-    send(Diagnostico, append, new(Disorder, text_item("Encontramos que usted tiene"))),
+    new(Diagnostico, dialog('Encontramos que usted padece')),
+    send(Diagnostico, append, new(Disorder, label(instruction, T))),
     send(Diagnostico, append, new(button('No estoy de acuerdo', message(@prolog, addLearning)))),
-    send(Disorder, editable, false),
-    send(Disorder, selection, T),
+    send(Diagnostico, open_centered),
+    send(Diagnostico, open),
     retractall(transtorno(_))
     ;
-    send(Window, display, new(Diagnostico, dialog_group('No encontramos su transtorno')), point(520,400)),
-    send(Diagnostico, append, new(button('Agregar nuevo transtorno', message(@prolog, addLearning)))).
+    new(Diagnostico, dialog('No encontramos su transtorno')),
+    send(Diagnostico, append, new(button('Agregar nuevo transtorno', message(@prolog, addLearning)))),
+    send(Diagnostico, open_centered),
+    send(Diagnostico, open).
 
 % ---------------------- Procedimiento para agregar un nuevo transtorno -------------------- %
 addLearning :- 
