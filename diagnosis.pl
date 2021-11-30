@@ -51,14 +51,14 @@ diagnosis(Window) :-
         true
     )),
     transtorno(T),
-    send(Window, display, new(Diagnostico, dialog_group('Resultado')), point(500,250)),
+    send(Window, display, new(Diagnostico, dialog_group('Resultado')), point(520,400)),
     send(Diagnostico, append, new(Disorder, text_item("Encontramos que usted tiene"))),
     send(Diagnostico, append, new(button('No estoy de acuerdo', message(@prolog, addLearning)))),
     send(Disorder, editable, false),
     send(Disorder, selection, T),
     retractall(transtorno(_))
     ;
-    send(Window, display, new(Diagnostico, dialog_group('No encontramos su transtorno')), point(500,250)),
+    send(Window, display, new(Diagnostico, dialog_group('No encontramos su transtorno')), point(520,400)),
     send(Diagnostico, append, new(button('Agregar nuevo transtorno', message(@prolog, addLearning)))).
 
 % ---------------------- Procedimiento para agregar un nuevo transtorno -------------------- %
