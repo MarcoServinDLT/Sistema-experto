@@ -17,12 +17,23 @@ imagenes(["Resources/1.jpg","Resources/2.jpg","Resources/3.jpg","Resources/4.jpg
     send(Main, open).
 
 % --------------------- Ventana emergente con pregunta --------------------- %
+age(Age) :-
+    new(Question, dialog('Diagnostico')),
+    send(Question, append, new(label(question, '¿Cuántos años tiene el paciente?'))),
+    send(Question, append, new(Edad, text_item('Edad'))),
+    send(Edad, type, int),
+    send(Question, append, new(button('Siguiente', message(Question, return, Edad?selection)))),
+    send(Question, open_centered),
+    send(Question, open),
+    get(Question, confirm, Age),
+    send(Question, destroy).
+
+% --------------------- Ventana emergente con pregunta --------------------- %
 questionWin(Q, Answer) :-
     new(Question, dialog('Diagnostico')),
     imagenes(Imgs),
     random_member(I, Imgs),
-    %writeln(Img),
-    send(Question, append, bitmap(image(I))),
+    send(Question, display, bitmap(image(I), @on)),
     send(Question, append, new(label(question, Q))),
     send(Question, append, new(button('Si', message(Question, return, 'Si')))),
     send(Question, append, new(button('No', message(Question, return, 'No')))),

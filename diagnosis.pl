@@ -54,7 +54,7 @@ diagnosis:-
     )),
     transtorno(T),
     new(Diagnostico, dialog('Encontramos que usted padece')),
-    send(Diagnostico, append, new(Disorder, label(instruction, T))),
+    send(Diagnostico, append, new(label(instruction, T))),
     send(Diagnostico, append, new(button('No estoy de acuerdo', message(@prolog, addLearning)))),
     send(Diagnostico, open_centered),
     send(Diagnostico, open),
@@ -67,6 +67,7 @@ diagnosis:-
 
 % ---------------------- Procedimiento para agregar un nuevo transtorno -------------------- %
 addLearning :- 
+    retractall(patientAnswers(_,_)),
     consult("learning.pl"),
     new(NewDisorder, dialog('Agregar nuevo transtorno')),
     new(NameDisorder, text_item('Ingrese el nombre del transtorno')),
@@ -76,4 +77,3 @@ addLearning :-
     send(NewDisorder, append, new(button('Guardar',   message(@prolog, addJudment, NameDisorder?selection, NewDisorder)))),
     send(NewDisorder, open_centered),
     send(NewDisorder, open).
-    
