@@ -62,7 +62,8 @@ diagnosis:-
     retractall(transtorno(_))
     ;
     new(Diagnostico, dialog('No encontramos su transtorno')),
-    send(Diagnostico, append, new(button('Agregar nuevo transtorno', message(@prolog, addLearning)))),
+    send(Diagnostico, append, bitmap(image('Resources/que.jpg'))),
+    send(Diagnostico, append, new(button('Agregar nuevo transtorno', message(@prolog, addLearning), center))),
     send(Diagnostico, open_centered),
     send(Diagnostico, open).
 
