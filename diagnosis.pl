@@ -54,16 +54,16 @@ diagnosis:-
     )),
     transtorno(T),
     new(Diagnostico, dialog('Encontramos que usted padece')),
-    send(Diagnostico, append, bitmap(image('Resources/transtorno.jpg'))),
-    send(Diagnostico, display, new(label(instruction, T, font('times','roman',30))), point(500,340)),
-    send(Diagnostico, display, new(button('No estoy de acuerdo', message(@prolog, addLearning))), point(650,430)),
+    send(Diagnostico, append, bitmap(image('Resources/diagnostico.jpg'))),
+    send(Diagnostico, display, new(label(instruction, T, font('times','roman',30))), point(400,280)),
+    send(Diagnostico, display, new(button('No estoy de acuerdo', message(@prolog, addLearning))), point(600,430)),
     send(Diagnostico, open_centered),
     send(Diagnostico, open),
     retractall(transtorno(_))
     ;
     new(Diagnostico, dialog('No encontramos su transtorno')),
-    send(Diagnostico, append, bitmap(image('Resources/que.jpg'))),
-    send(Diagnostico, append, new(button('Agregar nuevo transtorno', message(@prolog, addLearning), center))),
+    send(Diagnostico, append, bitmap(image('Resources/k.jpg'))),
+    send(Diagnostico, display, new(button('Agregar nuevo transtorno', message(@prolog, addLearning))), point(180, 240)),
     send(Diagnostico, open_centered),
     send(Diagnostico, open).
 
