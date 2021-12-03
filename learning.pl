@@ -22,12 +22,12 @@ assertQuestion(Question,Answer,Name,Save, Window, OldWindow) :-
         (Save ='N') ->  questionJudment(Name, OldWindow)   %Si quiere seguir agregando preguntas
         ; writeln('Guardar'), addJudment(Name, OldWindow).  %Si ya quiere guardar
 
-% --------------------- Procedimiento para agregar preguntas sobre el nuevo transtorno --------------------- %
+% --------------------- Procedimiento para agregar preguntas sobre el nuevo trastorno --------------------- %
 questionJudment(Name, OldWindow) :-
     (Name \= '') 
     ->
         new(NewQuestion, dialog('Agregar nueva pregunta')),
-        new(QuestionDisorder, text_item('Ingrese la nueva pregunta para su transtorno')),
+        new(QuestionDisorder, text_item('Ingrese la nueva pregunta para su trastorno')),
         send(NewQuestion, append, QuestionDisorder),
         new(M, menu(respuesta, cycle)),
         send_list(M, append, ['Si', 'No']),
