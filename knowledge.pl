@@ -1,6 +1,6 @@
 :- dynamic disorders/2.
 
-disorders("Transtorno de Ansiedad Generalizada", 
+disorders("Trastorno de Ansiedad Generalizada", 
 [
     "Los problemas que el paciente presenta han tenido consecuencias negativas en su vida cotidiana?",
     "El paciente ha tenido episodios de ansiedad?",
@@ -20,7 +20,7 @@ disorders("Transtorno de Ansiedad Generalizada",
 ]
 ).
 
-disorders("Transtorno de Fobia Especifica", 
+disorders("Trastorno de Fobia Especifica", 
 [
     "Los problemas que el paciente presenta han tenido consecuencias negativas en su vida cotidiana?",
     "El paciente ha tenido episodios de ansiedad?",
@@ -54,7 +54,7 @@ disorders("Agorafobia",
 ]
 ).
 
-disorders("Transtorno Depresivo Mayor",
+disorders("Trastorno Depresivo Mayor",
 [
     "Los problemas que el paciente presenta han tenido consecuencias negativas en su vida cotidiana?",
     "El paciente esta enfermo?",
