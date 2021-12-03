@@ -38,8 +38,8 @@ addAnswer(Question, Asnwer, Window) :-
     assert(patientAnswers(Question, Asnwer)), 
     send(Window, close).
 
-% --------------------- Procedimiento para alamcenar el transtorno encontrado --------------------- %
-:- dynamic transtorno/1.
+% --------------------- Procedimiento para alamcenar el trastorno encontrado --------------------- %
+:- dynamic trastorno/1.
 
 % --------------------- Procedimiento para realizar un diagnóstico --------------------- %
 diagnosis:-
@@ -48,33 +48,33 @@ diagnosis:-
     forall(disorders(T, L), (
         length(L, Tam),
         multiSympton(L, Tam, 0, 0),
-        asserta(transtorno(T))
+        asserta(trastorno(T))
         ;
         true
     )),
-    transtorno(T),
+    trastorno(T),
     new(Diagnostico, dialog('Encontramos que usted padece')),
     send(Diagnostico, append, bitmap(image('Resources/diagnostico.jpg'))),
     send(Diagnostico, display, new(label(instruction, T, font('times','roman',30))), point(400,280)),
     send(Diagnostico, display, new(button('No estoy de acuerdo', message(@prolog, addLearning))), point(600,430)),
     send(Diagnostico, open_centered),
     send(Diagnostico, open),
-    retractall(transtorno(_))
+    retractall(trastorno(_))
     ;
-    new(Diagnostico, dialog('No encontramos su transtorno')),
+    new(Diagnostico, dialog('No encontramos su trastorno')),
     send(Diagnostico, append, bitmap(image('Resources/k.jpg'))),
-    send(Diagnostico, display, new(button('Agregar nuevo transtorno', message(@prolog, addLearning))), point(180, 240)),
+    send(Diagnostico, display, new(button('Agregar nuevo trastorno', message(@prolog, addLearning))), point(180, 240)),
     send(Diagnostico, open_centered),
     send(Diagnostico, open).
 
-% ---------------------- Procedimiento para agregar un nuevo transtorno -------------------- %
+% ---------------------- Procedimiento para agregar un nuevo trastorno -------------------- %
 addLearning :- 
     retractall(patientAnswers(_,_)),
     consult("learning.pl"),
-    new(NewDisorder, dialog('Agregar nuevo transtorno')),
-    new(NameDisorder, text_item('Ingrese el nombre del transtorno')),
+    new(NewDisorder, dialog('Agregar nuevo trastorno')),
+    new(NameDisorder, text_item('Ingrese el nombre del trastorno')),
     send(NewDisorder, append, NameDisorder),
-    send(NewDisorder, append, new(label(instruction,'Desea agregar preguntas especificas para este transtorno?'))),
+    send(NewDisorder, append, new(label(instruction,'¿Desea agregar preguntas especificas para este trastorno?'))),
     send(NewDisorder, append, new(button('Agregar preguntas',  message(@prolog, questionJudment, NameDisorder?selection, NewDisorder)))),
     send(NewDisorder, append, new(button('Guardar',   message(@prolog, addJudment, NameDisorder?selection, NewDisorder)))),
     send(NewDisorder, open_centered),
