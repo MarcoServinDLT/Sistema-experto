@@ -6,7 +6,6 @@ addJudment(Disorder, OldWindow) :-
         findall(P, patientAnswers(P, _), L), %Solo le puse que ingresara las que se respondió con 'Si'
         assert(disorders(Disorder, L)),
         tell('knowledge.pl'),
-        writeln(":- encoding(utf8)."),
         listing(disorders/2),
         listing(specialCriterion/2),
         listing(expectedResponse/2),

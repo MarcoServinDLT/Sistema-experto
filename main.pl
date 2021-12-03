@@ -19,7 +19,7 @@ imagenes(["Resources/1.jpg","Resources/2.jpg","Resources/3.jpg","Resources/4.jpg
 % --------------------- Ventana emergente con pregunta --------------------- %
 age(Age) :-
     new(Question, dialog('Diagnostico')),
-    send(Question, append, new(label(question, '¿Cuántos años tiene el paciente?'))),
+    send(Question, append, new(label(question, 'Cuántos anos tiene el paciente?'))),
     send(Question, append, new(Edad, text_item('Edad'))),
     send(Edad, type, int),
     send(Question, append, new(button('Siguiente', message(Question, return, Edad?selection)))),

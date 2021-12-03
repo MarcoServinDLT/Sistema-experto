@@ -74,7 +74,7 @@ addLearning :-
     new(NewDisorder, dialog('Agregar nuevo transtorno')),
     new(NameDisorder, text_item('Ingrese el nombre del transtorno')),
     send(NewDisorder, append, NameDisorder),
-    send(NewDisorder, append, new(label(instruction,'¿Desea agregar preguntas especificas para este transtorno?'))),
+    send(NewDisorder, append, new(label(instruction,'Desea agregar preguntas especificas para este transtorno?'))),
     send(NewDisorder, append, new(button('Agregar preguntas',  message(@prolog, questionJudment, NameDisorder?selection, NewDisorder)))),
     send(NewDisorder, append, new(button('Guardar',   message(@prolog, addJudment, NameDisorder?selection, NewDisorder)))),
     send(NewDisorder, open_centered),
