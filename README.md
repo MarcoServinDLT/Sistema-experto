@@ -3,7 +3,7 @@ Sistema Experto que permite la identificación de trastornos mentales
 Hecho por 5 cabrones que "recibieron" clases de IA; si nosotros pudimos crear esto
 ustedes pueden con lo que sea.
 
-![](Contexto/Diagrama en Venn Trastornos.png)
+![](Contexto/Diagrama%20en%20Venn%20Trastornos.png)
 
 ## Requisitos⚙️
 ...
