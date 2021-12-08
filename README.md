@@ -1,5 +1,7 @@
 # Ψstema-experto
 Sistema Experto que permite la identificación de trastornos mentales
+Hecho por 5 cabrones que "recibieron" clases de IA; si nosotros pudimos crear esto
+ustedes pueden con lo que sea
 ## Requisitos⚙️
 ...
 
