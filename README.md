@@ -1,4 +1,4 @@
-# Ψstema-experto
+Sistema-experto
 Sistema Experto que permite la identificación de trastornos mentales.
 
 Este programa es capaz de identificar distintos trastornos mentales mediante la realización de preguntas referentes a la sintomatología de cada trastorno, además de contar con la capacidad de aprender nuevos trastornos y sus síntomas.
